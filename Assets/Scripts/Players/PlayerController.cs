@@ -33,6 +33,8 @@ namespace Players
             m_navMeshMouseResolver.Initialize(camera);
             m_playerMovement.Initialize(m_config.speed, m_config.angularSpeed);
             m_playerRotationCalculator = new PlayerRotationCalculator(transform, camera);
+            
+            SetupCursor();
         }
 
         private void Update()
@@ -50,6 +52,17 @@ namespace Players
                 {
                     m_playerMovement.SetDestination(navPoint.Value);
                 }
+            }
+        }
+
+        private void SetupCursor()
+        {
+            Texture2D cursorTexture = m_config.cursorTexture;
+
+            if (cursorTexture is not null)
+            {
+                var hotspot = new Vector2(cursorTexture.width / 2f, cursorTexture.height / 2f);
+                Cursor.SetCursor(m_config.cursorTexture, hotspot, CursorMode.Auto);
             }
         }
     }
