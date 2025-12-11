@@ -6,10 +6,7 @@ namespace Magic.Spells.Data
     public class TargetSpellData : BaseSpellData
     {
         [SerializeField] [Min(0)] private float m_speed;
-        [SerializeField] [Min(0)] private float m_damage;
         
         public float speed => m_speed;
-        
-        public float damage => m_damage;
     }
 }

@@ -12,6 +12,7 @@ namespace Magic.Spells.Data
         [SerializeField] private GameObject m_effect;
         [SerializeField] private ElementType[] m_combination;
         
+        [SerializeReferenceDropdown]
         [SerializeReference] private IEffect[] m_effects;
         
         public string spellName => _spellName;
