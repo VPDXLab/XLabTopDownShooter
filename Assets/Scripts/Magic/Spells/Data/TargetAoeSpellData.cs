@@ -3,5 +3,5 @@ using UnityEngine;
 namespace Magic.Spells.Data
 {
     [CreateAssetMenu(fileName = "TargetAoeSpellData", menuName = "XLab/Magic/Spells/Target Aoe Spell")]
-    public class TargetAoeEffect : AoeSpellData  { }
+    public class TargetAoeSpellData : AoeSpellData  { }
 }
