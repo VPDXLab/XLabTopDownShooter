@@ -1,15 +1,15 @@
+using Inputs;
 using UnityEngine;
 using UnityEngine.InputSystem;
 
 namespace Players
 {
     [RequireComponent(typeof(PlayerMovement))]
-    [RequireComponent(typeof(NavMeshMouseResolver))]
     public class PlayerController : MonoBehaviour
     {
         [SerializeField] private PlayerConfig m_config;
+        [SerializeField] private MouseResolver m_mouseResolver;
         [SerializeField] private PlayerMovement m_playerMovement;
-        [SerializeField] private NavMeshMouseResolver m_navMeshMouseResolver;
         
         private PlayerRotationCalculator m_playerRotationCalculator;
 
@@ -19,18 +19,12 @@ namespace Players
             {
                 m_playerMovement = GetComponent<PlayerMovement>();
             }
-            
-            if (!m_navMeshMouseResolver)
-            {
-                m_navMeshMouseResolver = GetComponent<NavMeshMouseResolver>();
-            }
         }
 
         private void Start()
         {
             var camera = Camera.main;
             
-            m_navMeshMouseResolver.Initialize(camera);
             m_playerMovement.Initialize(m_config.speed, m_config.angularSpeed);
             m_playerRotationCalculator = new PlayerRotationCalculator(transform, camera);
             
@@ -46,7 +40,7 @@ namespace Players
             
             if (Mouse.current.rightButton.wasPressedThisFrame)
             {
-                var navPoint = m_navMeshMouseResolver.GetNavMeshPoint(mousePosition);
+                var navPoint = m_mouseResolver.GetNavMeshPoint();
                 
                 if (navPoint.HasValue)
                 {

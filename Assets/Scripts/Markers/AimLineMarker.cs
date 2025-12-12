@@ -1,5 +1,5 @@
+using Inputs;
 using UnityEngine;
-using UnityEngine.InputSystem;
 
 namespace Markers
 {
@@ -9,13 +9,13 @@ namespace Markers
         [Header("Components")]
         [SerializeField] private Transform m_playerTransform;
         [SerializeField] private LineRenderer m_lineRenderer;
+        [SerializeField] private MouseResolver m_mouseResolver;
 
         [Header("Settings")]
         [SerializeField] [Min(0)] private float m_zOffset = 0.5f;
         [SerializeField] [Min(0)] private float m_lineWidth = 0.1f;
         [SerializeField] [Min(0)] private float m_disableDistance = 1f;
-
-        private Camera m_camera;
+        
 
         private void OnValidate()
         {
@@ -27,7 +27,6 @@ namespace Markers
 
         private void Awake()
         {
-            m_camera = Camera.main;
             m_lineRenderer.positionCount = 2;
             m_lineRenderer.startWidth = m_lineWidth;
             m_lineRenderer.endWidth = m_lineWidth;
@@ -51,14 +50,11 @@ namespace Markers
 
         private Vector3 GetAimPosition()
         {
-            var mousePosition = Mouse.current.position.ReadValue();
+            var worldPosition = m_mouseResolver.GetCursorWorldPosition();
             
-            var ray = m_camera.ScreenPointToRay(mousePosition);
-            var groundPlane = new Plane(inNormal: Vector3.up, inPoint: new Vector3(0, m_playerTransform.position.y, 0));
-            
-            if (groundPlane.Raycast(ray, out var distance))
+            if (worldPosition.HasValue)
             {
-                return ray.GetPoint(distance);
+                return worldPosition.Value;
             }
             
             return m_playerTransform.position + m_playerTransform.forward;

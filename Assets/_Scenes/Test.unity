@@ -783,6 +783,7 @@ Transform:
   m_Children:
   - {fileID: 491750570}
   - {fileID: 1187695262}
+  - {fileID: 1738253969}
   - {fileID: 70780500}
   - {fileID: 1588926800}
   m_Father: {fileID: 0}
@@ -1510,8 +1511,10 @@ MonoBehaviour:
   m_EditorClassIdentifier: Assembly-CSharp::Markers.AimLineMarker
   m_playerTransform: {fileID: 1320782301}
   m_lineRenderer: {fileID: 1187695264}
+  m_mouseResolver: {fileID: 1738253970}
   m_zOffset: 0.75
   m_lineWidth: 0.1
+  m_disableDistance: 1
 --- !u!120 &1187695264
 LineRenderer:
   serializedVersion: 3
@@ -1809,6 +1812,54 @@ MonoBehaviour:
   m_EditorClassIdentifier: Assembly-CSharp::Markers.TargetMarkerObserver
   m_targetMarker: {fileID: 1783899608}
   m_playerMovement: {fileID: 1997623432}
+--- !u!1 &1738253968
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 1738253969}
+  - component: {fileID: 1738253970}
+  m_Layer: 0
+  m_Name: MouseResolver
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &1738253969
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1738253968}
+  serializedVersion: 2
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 467705131}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &1738253970
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1738253968}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: a1e5ed0ad18947f5bb1313a9f56f0c30, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::Inputs.MouseResolver
+  m_layerMask:
+    serializedVersion: 2
+    m_Bits: 4294967295
+  m_navMeshSampleMaxDistance: 100
 --- !u!1 &1783899606
 GameObject:
   m_ObjectHideFlags: 0
@@ -2155,6 +2206,10 @@ PrefabInstance:
       propertyPath: m_Name
       value: Player
       objectReference: {fileID: 0}
+    - target: {fileID: 5961986916385506174, guid: 8baf8e9cab547df47b22be905c2106ff, type: 3}
+      propertyPath: m_mouseResolver
+      value: 
+      objectReference: {fileID: 1738253970}
     - target: {fileID: 6002771655341897693, guid: 8baf8e9cab547df47b22be905c2106ff, type: 3}
       propertyPath: m_AnchorMax.y
       value: 0
@@ -2203,7 +2258,8 @@ PrefabInstance:
       propertyPath: m_AnchoredPosition.y
       value: 0
       objectReference: {fileID: 0}
-    m_RemovedComponents: []
+    m_RemovedComponents:
+    - {fileID: 1736720529609624105, guid: 8baf8e9cab547df47b22be905c2106ff, type: 3}
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
     m_AddedComponents: []
