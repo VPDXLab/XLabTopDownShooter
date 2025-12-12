@@ -9,11 +9,15 @@ namespace Magic.Data
     {
         [SerializeField] private ElementsData m_elementsData;
         [SerializeField] private SpellsDataBase m_spellsDataBase;
+
+        [SerializeField] [Min(1)] private int m_maxElements = 3;
         [SerializeField] [Min(0)] private float m_cancelCooldown = 0.3f;
         
         public ElementsData ElementsData => m_elementsData;
         
         public SpellsDataBase SpellsDataBase => m_spellsDataBase;
+        
+        public int maxElements => m_maxElements;
         
         public float cancelCooldown => m_cancelCooldown;
     }
