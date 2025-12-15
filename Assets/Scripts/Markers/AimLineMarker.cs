@@ -16,7 +16,6 @@ namespace Markers
         [SerializeField] [Min(0)] private float m_lineWidth = 0.1f;
         [SerializeField] [Min(0)] private float m_disableDistance = 1f;
         
-
         private void OnValidate()
         {
             if (!m_lineRenderer)

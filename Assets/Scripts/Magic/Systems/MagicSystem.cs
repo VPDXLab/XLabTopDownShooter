@@ -54,10 +54,8 @@ namespace Magic.Systems
         
         public void AddElement(ElementType element)
         {
-            Debug.Log("1");
             if (state is MagicState.Cooldown or MagicState.Casting) return;
             
-            Debug.Log("2");
             m_spellPreparation.AddElement(element);
             state = MagicState.Preparing;
         }
