@@ -3,13 +3,14 @@ using System.Linq;
 using Magic.Effects;
 using Magic.Elements;
 using System.Collections.Generic;
+using UnityEngine.Serialization;
 
 namespace Magic.Spells.Data
 {
     public abstract class BaseSpellData : ScriptableObject
     {
         [SerializeField] private string _spellName;
-        [SerializeField] private GameObject m_effect;
+        [FormerlySerializedAs("m_effect")] [SerializeField] private GameObject _mVisualEffect;
         [SerializeField] private ElementType[] m_combination;
         
         [SerializeReferenceDropdown]
@@ -17,7 +18,7 @@ namespace Magic.Spells.Data
         
         public string spellName => _spellName;
         
-        public GameObject effect => m_effect;
+        public GameObject visualEffect => _mVisualEffect;
         
         public IReadOnlyList<IEffect> effects => m_effects;
         

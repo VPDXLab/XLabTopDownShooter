@@ -34,7 +34,7 @@ namespace Magic.Spells.Projectiles
         {
             if (!m_initialized) return;
             
-            if (Vector3.Distance(transform.position, m_targetPosition) <= float.Epsilon)
+            if (Vector3.Distance(transform.position, m_targetPosition) <= 0.1f)
             {
                 Destroy(gameObject);
             }

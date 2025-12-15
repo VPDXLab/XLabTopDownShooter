@@ -1,5 +1,6 @@
 using Inputs;
 using UnityEngine;
+using Magic.Systems;
 using UnityEngine.InputSystem;
 
 namespace Players
@@ -10,6 +11,7 @@ namespace Players
         [SerializeField] private PlayerConfig m_config;
         [SerializeField] private MouseResolver m_mouseResolver;
         [SerializeField] private PlayerMovement m_playerMovement;
+        [SerializeField] private MagicInputHelper m_magicInputHelper;
         
         private PlayerRotationCalculator m_playerRotationCalculator;
 
@@ -47,6 +49,8 @@ namespace Players
                     m_playerMovement.SetDestination(navPoint.Value);
                 }
             }
+            
+            m_magicInputHelper.Update();
         }
 
         private void SetupCursor()
