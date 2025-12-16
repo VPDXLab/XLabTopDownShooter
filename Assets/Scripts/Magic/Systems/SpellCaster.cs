@@ -73,21 +73,11 @@ namespace Magic.Systems
                 throw new NullReferenceException("NonTarget spell must have visualEffect");
             }
             
-            // if (!spell.visualEffect)
-            //     return;
-            //
-            // var direction = (cursorPosition - m_casterTransform.position).normalized;
-            // direction.y = 0;
-            //
-            // var spawnPosition = m_casterTransform.position + direction * spell.range;
-            //
-            // var effectObject = GameObject.Instantiate(spell.visualEffect, spawnPosition, Quaternion.identity);
-            //
-            // // Применяем эффекты к области
-            // ApplyEffectsInArea(effectObject.transform.position, spell);
-            //
-            // // Уничтожаем объект эффекта после duration
-            // GameObject.Destroy(effectObject, spell.duration);
+            var nonTarget = Object.Instantiate(nonTargetSpell.visualEffect, m_casterTransform.position, Quaternion.identity);
+            nonTarget.transform.parent = m_casterTransform;
+            nonTarget.transform.localRotation = Quaternion.identity;
+            
+            Object.Destroy(nonTarget, nonTargetSpell.duration);
         }
 
         private void CastTargetAoe(TargetAoeSpellData targetAoeSpell, Vector3 worldPosition) =>
