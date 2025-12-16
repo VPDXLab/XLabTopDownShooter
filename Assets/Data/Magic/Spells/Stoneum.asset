@@ -1,0 +1,27 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: e76ef0b05b5a41828aa34eb424025296, type: 3}
+  m_Name: Stoneum
+  m_EditorClassIdentifier: Assembly-CSharp::Magic.Spells.Data.TargetAoeSpellData
+  _spellName: Stoneum
+  _mVisualEffect: {fileID: 3028607741939164160, guid: 1955f338d7c8341579a982c756e6419c, type: 3}
+  m_combination: 03000000
+  m_effects:
+  - rid: 5294317072016212032
+  m_radius: 2
+  references:
+    version: 2
+    RefIds:
+    - rid: 5294317072016212032
+      type: {class: AttackEffect, ns: Magic.Effects, asm: Assembly-CSharp}
+      data:
+        _damage: 25
