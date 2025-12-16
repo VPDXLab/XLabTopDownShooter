@@ -1,17 +1,17 @@
-using System;
+using Inputs;
+using Magic.Systems;
 using UnityEngine;
-using UnityEngine.AI;
 using UnityEngine.InputSystem;
 
 namespace Players
 {
     [RequireComponent(typeof(PlayerMovement))]
-    [RequireComponent(typeof(NavMeshMouseResolver))]
     public class PlayerController : MonoBehaviour
     {
         [SerializeField] private PlayerConfig m_config;
         [SerializeField] private PlayerMovement m_playerMovement;
-        [SerializeField] private NavMeshMouseResolver m_navMeshMouseResolver;
+        [SerializeField] private MouseResolver mMouseResolver;
+        [SerializeField] private MagicInputHelper m_magicInputHelper;
 
         private PlayerRotationCalculator m_playerRotationCalculator;
         
@@ -22,9 +22,9 @@ namespace Players
                 m_playerMovement = GetComponent<PlayerMovement>();
             }
             
-            if (!m_navMeshMouseResolver)
+            if (!mMouseResolver)
             {
-                m_navMeshMouseResolver = GetComponent<NavMeshMouseResolver>();
+                mMouseResolver = GetComponent<MouseResolver>();
             }
         }
 
@@ -32,7 +32,6 @@ namespace Players
         {
             var camera = Camera.main;
             
-            m_navMeshMouseResolver.Initialize(camera);
             m_playerMovement.Initialize(m_config.speed, m_config.angularSpeed);
             m_playerRotationCalculator = new PlayerRotationCalculator(camera, transform);
             
@@ -47,13 +46,15 @@ namespace Players
             
             if (Mouse.current.rightButton.wasPressedThisFrame)
             {
-                Vector3? navPoint = m_navMeshMouseResolver.GetNavMeshPoint(mousePosition);
+                Vector3? navPoint = mMouseResolver.GetNavMeshPoint();
 
                 if (navPoint.HasValue)
                 {
                     m_playerMovement.SetDestination(navPoint.Value);
                 }
             }
+            
+            m_magicInputHelper.Update();
         }
 
         private void SetupCursor()
