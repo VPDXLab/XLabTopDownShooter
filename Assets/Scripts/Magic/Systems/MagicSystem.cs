@@ -15,8 +15,8 @@ namespace Magic.Systems
         
         public event Action<IReadOnlyList<ElementType>> ElementsChanged
         {
-            add => m_spellPreparation.ElementsChanged += value;
-            remove => m_spellPreparation.ElementsChanged -= value;
+            add => spellPreparation.ElementsChanged += value;
+            remove => spellPreparation.ElementsChanged -= value;
         }
         
         [SerializeField] private MagicConfig m_magicConfig;
@@ -40,23 +40,25 @@ namespace Magic.Systems
             }
         }
 
+        private SpellPreparation spellPreparation =>
+            m_spellPreparation ??= new SpellPreparation(m_magicConfig);
+
         private void Awake()
         {
             m_caster = new SpellCaster(transform);
-            m_spellPreparation = new SpellPreparation(m_magicConfig);
         }
 
         private void OnEnable() =>
-            m_spellPreparation.OverflowOccurred += CancelSpell;
+            spellPreparation.OverflowOccurred += CancelSpell;
 
         private void OnDisable() =>
-            m_spellPreparation.OverflowOccurred -= CancelSpell;
+            spellPreparation.OverflowOccurred -= CancelSpell;
         
         public void AddElement(ElementType element)
         {
             if (state is MagicState.Cooldown or MagicState.Casting) return;
             
-            m_spellPreparation.AddElement(element);
+            spellPreparation.AddElement(element);
             state = MagicState.Preparing;
         }
         
@@ -64,14 +66,14 @@ namespace Magic.Systems
         {
             if (state is not MagicState.Preparing) return;
             
-            if (m_spellPreparation.TryGetSpell(out var spell))
+            if (spellPreparation.TryGetSpell(out var spell))
             {
                 state = MagicState.Casting;
                 
                 var cursorWorldPosition = m_mouseResolver.GetCursorWorldPosition();
                 m_caster.Cast(spell, cursorWorldPosition.Value);
                 
-                m_spellPreparation.Clear();
+                spellPreparation.Clear();
                 state = MagicState.Idle;
             }
             else
@@ -84,7 +86,7 @@ namespace Magic.Systems
         {
             if (state is MagicState.Preparing)
             {
-                m_spellPreparation.Clear();
+                spellPreparation.Clear();
                 SpellCancelled?.Invoke();
 
                 StartCoolDown();
