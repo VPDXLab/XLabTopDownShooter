@@ -12,7 +12,7 @@ namespace Entities
         private float m_value;
         private bool m_initialized;
         
-        public float Value
+        public float value
         {
             get => m_value;
             private set
@@ -48,7 +48,7 @@ namespace Entities
             if (heal < 0)
                 throw new ArgumentOutOfRangeException(nameof(heal), heal, "Heal cannot be negative");
             
-            Value += heal;
+            value += heal;
         }
 
         public void TakeDamage(float damage)
@@ -56,7 +56,7 @@ namespace Entities
             if (damage < 0)
                 throw new ArgumentOutOfRangeException(nameof(damage), damage, "Heal cannot be negative");
             
-            Value -= damage;
+            value -= damage;
         }
     }
 }

@@ -6,10 +6,14 @@ namespace Entities.Enemies
 {
     public class Enemy : MonoBehaviour
     {
+        public event Action<Enemy> Died; 
+        
         [SerializeField] private EnemyData m_enemyData;
         [SerializeField] private HealthComponent m_health;
         
         private EnemyData m_data;
+        
+        public HealthComponent health => m_health;
         
         // TODO Add HealthComponent
         // TODO Add Movement
@@ -24,7 +28,7 @@ namespace Entities.Enemies
         {
             m_health.ValueChanged += () =>
             {
-                Debug.Log($"Health Changed: {m_health.Value}");
+                Debug.Log($"Health Changed: {m_health.value}");
             };
 
             m_health.Died += OnDied;
@@ -41,10 +45,7 @@ namespace Entities.Enemies
             m_health.Initialize(data.health);
         }
 
-        private void OnDied()
-        {
-            Debug.Log("Enemy Died");
-            Destroy(gameObject);
-        }
+        private void OnDied() =>
+            Died?.Invoke(this);
     }
 }
