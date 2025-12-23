@@ -202,6 +202,7 @@ GameObject:
   - component: {fileID: 1405014297708060184}
   - component: {fileID: 865057033484526708}
   - component: {fileID: 627137754629066343}
+  - component: {fileID: 3811852832309527252}
   m_Layer: 0
   m_Name: PlayerCanvas
   m_TagString: Untagged
@@ -292,6 +293,18 @@ MonoBehaviour:
   m_BlockingMask:
     serializedVersion: 2
     m_Bits: 4294967295
+--- !u!114 &3811852832309527252
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 3819809868154210745}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 2fe44c270b0944dd8837f8d2d0bd2cdf, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::Utils.FixedRotation
 --- !u!1 &5629388193467892882
 GameObject:
   m_ObjectHideFlags: 0

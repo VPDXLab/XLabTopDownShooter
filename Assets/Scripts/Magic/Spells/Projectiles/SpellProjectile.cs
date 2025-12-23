@@ -1,6 +1,7 @@
 using UnityEngine;
 using Magic.Effects;
 using System.Collections.Generic;
+using Players;
 
 namespace Magic.Spells.Projectiles
 {
@@ -50,6 +51,7 @@ namespace Magic.Spells.Projectiles
         private void OnTriggerEnter(Collider other)
         {
             if (!m_initialized) return;
+            if (other.GetComponent<PlayerController>()) return;
             
             if (other.TryGetComponent<IEffectable>(out var effectable))
                 ApplyEffects(effectable);
