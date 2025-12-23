@@ -14,7 +14,7 @@ namespace Magic.Systems
         public event Action SpellCancelled; 
         public event Action<MagicState> StateChanged;
 
-        public event Action<IReadOnlyList<ElementType>> ElementChanged
+        public event Action<IReadOnlyList<ElementType>> ElementsChanged
         {
             add => spellPreparation.ElementsChanged += value;
             remove => spellPreparation.ElementsChanged -= value;

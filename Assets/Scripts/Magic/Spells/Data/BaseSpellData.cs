@@ -17,7 +17,9 @@ namespace Magic.Spells.Data
         
         public string spellName => m_spellName;
         
-        public GameObject visulaEffect => m_visualEffect;
+        public GameObject visualEffect => m_visualEffect;
+        
+        public IReadOnlyList<IEffect> effects => m_effects;
         
         public IReadOnlyList<ElementType> combination => m_combination;
 

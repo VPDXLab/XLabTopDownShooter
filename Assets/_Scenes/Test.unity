@@ -1389,7 +1389,7 @@ MonoBehaviour:
   m_CorrespondingSourceObject: {fileID: 9029773898639263411, guid: 8baf8e9cab547df47b22be905c2106ff, type: 3}
   m_PrefabInstance: {fileID: 2326979565783359616}
   m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 2326979565783359617}
+  m_GameObject: {fileID: 0}
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 83a5f39b2a144d03aa4db96810ca64ea, type: 3}
@@ -1566,38 +1566,6 @@ PrefabInstance:
     serializedVersion: 3
     m_TransformParent: {fileID: 0}
     m_Modifications:
-    - target: {fileID: 1538647785858929241, guid: 8baf8e9cab547df47b22be905c2106ff, type: 3}
-      propertyPath: m_AnchorMax.y
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 1538647785858929241, guid: 8baf8e9cab547df47b22be905c2106ff, type: 3}
-      propertyPath: m_AnchorMin.y
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 1538647785858929241, guid: 8baf8e9cab547df47b22be905c2106ff, type: 3}
-      propertyPath: m_AnchoredPosition.x
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 1538647785858929241, guid: 8baf8e9cab547df47b22be905c2106ff, type: 3}
-      propertyPath: m_AnchoredPosition.y
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 1740656267111802780, guid: 8baf8e9cab547df47b22be905c2106ff, type: 3}
-      propertyPath: m_AnchorMax.y
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 1740656267111802780, guid: 8baf8e9cab547df47b22be905c2106ff, type: 3}
-      propertyPath: m_AnchorMin.y
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 1740656267111802780, guid: 8baf8e9cab547df47b22be905c2106ff, type: 3}
-      propertyPath: m_AnchoredPosition.x
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 1740656267111802780, guid: 8baf8e9cab547df47b22be905c2106ff, type: 3}
-      propertyPath: m_AnchoredPosition.y
-      value: 0
-      objectReference: {fileID: 0}
     - target: {fileID: 2103264545628451059, guid: 8baf8e9cab547df47b22be905c2106ff, type: 3}
       propertyPath: m_LocalPosition.x
       value: 0
@@ -1642,57 +1610,19 @@ PrefabInstance:
       propertyPath: m_Name
       value: Player
       objectReference: {fileID: 0}
-    - target: {fileID: 2817329746063767860, guid: 8baf8e9cab547df47b22be905c2106ff, type: 3}
-      propertyPath: m_AnchorMax.y
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 2817329746063767860, guid: 8baf8e9cab547df47b22be905c2106ff, type: 3}
-      propertyPath: m_AnchorMin.y
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 2817329746063767860, guid: 8baf8e9cab547df47b22be905c2106ff, type: 3}
-      propertyPath: m_AnchoredPosition.x
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 2817329746063767860, guid: 8baf8e9cab547df47b22be905c2106ff, type: 3}
-      propertyPath: m_AnchoredPosition.y
-      value: 0
-      objectReference: {fileID: 0}
     - target: {fileID: 5961986916385506174, guid: 8baf8e9cab547df47b22be905c2106ff, type: 3}
       propertyPath: mMouseResolver
       value: 
       objectReference: {fileID: 2072405805}
-    - target: {fileID: 5961986916385506174, guid: 8baf8e9cab547df47b22be905c2106ff, type: 3}
-      propertyPath: m_magicInputHelper.m_magicSystem
+    - target: {fileID: 8830676854873502689, guid: 8baf8e9cab547df47b22be905c2106ff, type: 3}
+      propertyPath: m_mouseResolver
       value: 
-      objectReference: {fileID: 2326979565783359618}
+      objectReference: {fileID: 2072405805}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
-    m_AddedComponents:
-    - targetCorrespondingSourceObject: {fileID: 2766789612775872371, guid: 8baf8e9cab547df47b22be905c2106ff, type: 3}
-      insertIndex: -1
-      addedObject: {fileID: 2326979565783359618}
+    m_AddedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 8baf8e9cab547df47b22be905c2106ff, type: 3}
---- !u!1 &2326979565783359617 stripped
-GameObject:
-  m_CorrespondingSourceObject: {fileID: 2766789612775872371, guid: 8baf8e9cab547df47b22be905c2106ff, type: 3}
-  m_PrefabInstance: {fileID: 2326979565783359616}
-  m_PrefabAsset: {fileID: 0}
---- !u!114 &2326979565783359618
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 2326979565783359617}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 12efdc4ef0ce45cc949cc384a15cf030, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: Assembly-CSharp::Magic.Systems.MagicSystem
-  m_config: {fileID: 11400000, guid: 170752ab7da9ba94cae69c002ab82124, type: 2}
-  m_mouseResolver: {fileID: 2072405805}
 --- !u!1660057539 &9223372036854775807
 SceneRoots:
   m_ObjectHideFlags: 0

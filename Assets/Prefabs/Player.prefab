@@ -392,6 +392,7 @@ GameObject:
   m_Component:
   - component: {fileID: 6609639645634893697}
   - component: {fileID: 6936756508295973954}
+  - component: {fileID: 2952416280565400527}
   m_Layer: 0
   m_Name: PreparationView
   m_TagString: Untagged
@@ -447,6 +448,27 @@ MonoBehaviour:
   m_ChildScaleWidth: 0
   m_ChildScaleHeight: 0
   m_ReverseArrangement: 0
+--- !u!114 &2952416280565400527
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 8157286893125963137}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: c2aa8575a25c401ba75eb32445f1f93c, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::Magic.Views.PreparationSpellView
+  m_magicSystem: {fileID: 8830676854873502689}
+  m_config: {fileID: 11400000, guid: 170752ab7da9ba94cae69c002ab82124, type: 2}
+  m_elementsContainer: {fileID: 6609639645634893697}
+  m_icons:
+  - {fileID: 9160238364256458334}
+  - {fileID: 4624796180535920886}
+  - {fileID: 5574609964388646195}
+  m_shakeIntensity: 20
+  m_shakeDuration: 1
 --- !u!1001 &1771169040461114439
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -553,6 +575,17 @@ RectTransform:
   m_CorrespondingSourceObject: {fileID: 4579420444316079475, guid: d48ffa292dbd75b4c99a08254e008de7, type: 3}
   m_PrefabInstance: {fileID: 1771169040461114439}
   m_PrefabAsset: {fileID: 0}
+--- !u!114 &9160238364256458334 stripped
+MonoBehaviour:
+  m_CorrespondingSourceObject: {fileID: 7461268974969551385, guid: d48ffa292dbd75b4c99a08254e008de7, type: 3}
+  m_PrefabInstance: {fileID: 1771169040461114439}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 0
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: fe87c0e1cc204ed48ad3b37840f39efc, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: UnityEngine.UI::UnityEngine.UI.Image
 --- !u!1001 &2856780826318648047
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -655,6 +688,17 @@ RectTransform:
   m_CorrespondingSourceObject: {fileID: 4579420444316079475, guid: d48ffa292dbd75b4c99a08254e008de7, type: 3}
   m_PrefabInstance: {fileID: 2856780826318648047}
   m_PrefabAsset: {fileID: 0}
+--- !u!114 &4624796180535920886 stripped
+MonoBehaviour:
+  m_CorrespondingSourceObject: {fileID: 7461268974969551385, guid: d48ffa292dbd75b4c99a08254e008de7, type: 3}
+  m_PrefabInstance: {fileID: 2856780826318648047}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 0
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: fe87c0e1cc204ed48ad3b37840f39efc, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: UnityEngine.UI::UnityEngine.UI.Image
 --- !u!1001 &3087004942776338218
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -757,3 +801,14 @@ RectTransform:
   m_CorrespondingSourceObject: {fileID: 4579420444316079475, guid: d48ffa292dbd75b4c99a08254e008de7, type: 3}
   m_PrefabInstance: {fileID: 3087004942776338218}
   m_PrefabAsset: {fileID: 0}
+--- !u!114 &5574609964388646195 stripped
+MonoBehaviour:
+  m_CorrespondingSourceObject: {fileID: 7461268974969551385, guid: d48ffa292dbd75b4c99a08254e008de7, type: 3}
+  m_PrefabInstance: {fileID: 3087004942776338218}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 0
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: fe87c0e1cc204ed48ad3b37840f39efc, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: UnityEngine.UI::UnityEngine.UI.Image
