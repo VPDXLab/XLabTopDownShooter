@@ -1,5 +1,6 @@
 using UnityEngine;
 using Magic.Effects;
+using Magic.Effects.Extensions;
 using System.Collections.Generic;
 
 namespace Magic.Spells.Aoe
@@ -8,16 +9,11 @@ namespace Magic.Spells.Aoe
     {
         public void Initialize(Vector3 targetPosition, float radius, IReadOnlyCollection<IEffect> effects)
         {
-            var colliders = Physics.OverlapSphere(targetPosition, radius);
-            
-            foreach (var collider in colliders)
+            foreach (var collider in Physics.OverlapSphere(targetPosition, radius))
             {
-                if (collider.TryGetComponent<IEffectable>(out var effectable))
+                if (collider.gameObject.layer != gameObject.layer)
                 {
-                    foreach (var effect in effects)
-                    {
-                        effect.Apply(effectable);
-                    }
+                    effects.ApplyEffects(collider.GetComponents<IEffectable>());
                 }
             }
         }

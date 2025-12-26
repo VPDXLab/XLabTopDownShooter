@@ -10,12 +10,11 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 3e6d583c7a2546558f075eab7c68e68a, type: 3}
-  m_Name: static_enemy_ranged_01
+  m_Name: moving_enemy_melee_01
   m_EditorClassIdentifier: Assembly-CSharp::Entities.Enemies.Data.EnemyData
-  m_enemyType: 0
+  m_enemyType: 1
   m_health: 75
-  m_speed: 0
+  m_speed: 5
+  m_spell: {fileID: 11400000, guid: e8057d5fd9b8749f8931ae1157eb5277, type: 2}
   m_attackTime: 2
-  m_attackRange: 10
-  m_projectileRange: 5
-  m_spell: {fileID: 11400000, guid: d732b2e15c79d4cf89303bb41e520001, type: 2}
+  m_attackRange: 2

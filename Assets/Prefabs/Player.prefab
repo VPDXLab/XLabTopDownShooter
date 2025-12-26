@@ -16,7 +16,7 @@ GameObject:
   - component: {fileID: 9029773898639263411}
   - component: {fileID: 5961986916385506174}
   - component: {fileID: 8830676854873502689}
-  m_Layer: 0
+  m_Layer: 8
   m_Name: Player
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -203,7 +203,7 @@ GameObject:
   - component: {fileID: 865057033484526708}
   - component: {fileID: 627137754629066343}
   - component: {fileID: 3811852832309527252}
-  m_Layer: 0
+  m_Layer: 8
   m_Name: PlayerCanvas
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -316,7 +316,7 @@ GameObject:
   - component: {fileID: 5563292437348664980}
   - component: {fileID: 4012838022729449115}
   - component: {fileID: 6800554094892153557}
-  m_Layer: 0
+  m_Layer: 8
   m_Name: Cube
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -406,7 +406,7 @@ GameObject:
   - component: {fileID: 6609639645634893697}
   - component: {fileID: 6936756508295973954}
   - component: {fileID: 2952416280565400527}
-  m_Layer: 0
+  m_Layer: 8
   m_Name: PreparationView
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -490,9 +490,17 @@ PrefabInstance:
     serializedVersion: 3
     m_TransformParent: {fileID: 6609639645634893697}
     m_Modifications:
+    - target: {fileID: 1988103895328965841, guid: d48ffa292dbd75b4c99a08254e008de7, type: 3}
+      propertyPath: m_Layer
+      value: 8
+      objectReference: {fileID: 0}
     - target: {fileID: 4043757429119238861, guid: d48ffa292dbd75b4c99a08254e008de7, type: 3}
       propertyPath: m_Name
       value: PreparationElement (1)
+      objectReference: {fileID: 0}
+    - target: {fileID: 4043757429119238861, guid: d48ffa292dbd75b4c99a08254e008de7, type: 3}
+      propertyPath: m_Layer
+      value: 8
       objectReference: {fileID: 0}
     - target: {fileID: 4579420444316079475, guid: d48ffa292dbd75b4c99a08254e008de7, type: 3}
       propertyPath: m_Pivot.x
@@ -607,9 +615,17 @@ PrefabInstance:
     serializedVersion: 3
     m_TransformParent: {fileID: 6609639645634893697}
     m_Modifications:
+    - target: {fileID: 1988103895328965841, guid: d48ffa292dbd75b4c99a08254e008de7, type: 3}
+      propertyPath: m_Layer
+      value: 8
+      objectReference: {fileID: 0}
     - target: {fileID: 4043757429119238861, guid: d48ffa292dbd75b4c99a08254e008de7, type: 3}
       propertyPath: m_Name
       value: PreparationElement (2)
+      objectReference: {fileID: 0}
+    - target: {fileID: 4043757429119238861, guid: d48ffa292dbd75b4c99a08254e008de7, type: 3}
+      propertyPath: m_Layer
+      value: 8
       objectReference: {fileID: 0}
     - target: {fileID: 4579420444316079475, guid: d48ffa292dbd75b4c99a08254e008de7, type: 3}
       propertyPath: m_Pivot.x
@@ -720,9 +736,17 @@ PrefabInstance:
     serializedVersion: 3
     m_TransformParent: {fileID: 6609639645634893697}
     m_Modifications:
+    - target: {fileID: 1988103895328965841, guid: d48ffa292dbd75b4c99a08254e008de7, type: 3}
+      propertyPath: m_Layer
+      value: 8
+      objectReference: {fileID: 0}
     - target: {fileID: 4043757429119238861, guid: d48ffa292dbd75b4c99a08254e008de7, type: 3}
       propertyPath: m_Name
       value: PreparationElement (3)
+      objectReference: {fileID: 0}
+    - target: {fileID: 4043757429119238861, guid: d48ffa292dbd75b4c99a08254e008de7, type: 3}
+      propertyPath: m_Layer
+      value: 8
       objectReference: {fileID: 0}
     - target: {fileID: 4579420444316079475, guid: d48ffa292dbd75b4c99a08254e008de7, type: 3}
       propertyPath: m_Pivot.x

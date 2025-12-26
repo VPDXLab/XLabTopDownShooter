@@ -1,5 +1,7 @@
-using Entities.Enemies.Data;
+using System;
 using UnityEngine;
+using Entities.Enemies.Data;
+using Random = UnityEngine.Random;
 
 namespace Entities.Enemies
 {
@@ -7,18 +9,25 @@ namespace Entities.Enemies
     {
         [SerializeField] private Enemy[] m_enemies;
         [SerializeField] private EnemyData[] m_data;
-        
         [SerializeField] private Transform[] m_spawnPoints;
+        [SerializeField] private Transform m_playerTransform;
+
+        // TODO Remove temp solution
+        private void Start() =>
+            Spawn();
 
         public void Spawn()
         {
+            if (!m_playerTransform)
+                throw new Exception("[SpawnerEnemy] Player Transform is not assigned!");
+
             foreach (var spawnPoint in m_spawnPoints)
             {
                 var enemy = GetEnemy();
                 var enemyData = GetEnemyData();
 
-                var enemyInstance = Instantiate(enemy, spawnPoint);
-                enemyInstance.Initialize(enemyData);
+                var enemyInstance = Instantiate(enemy, spawnPoint.position, spawnPoint.rotation);
+                enemyInstance.Initialize(enemyData, m_playerTransform);
 
                 enemyInstance.Died += OnDied;
             }
@@ -26,6 +35,7 @@ namespace Entities.Enemies
 
         private void OnDied(Enemy enemy)
         {
+            enemy.Died -= OnDied;
             Destroy(enemy.gameObject);
         }
 
