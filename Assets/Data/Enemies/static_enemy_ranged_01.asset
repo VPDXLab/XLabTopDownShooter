@@ -13,7 +13,8 @@ MonoBehaviour:
   m_Name: static_enemy_ranged_01
   m_EditorClassIdentifier: Assembly-CSharp::Entities.Enemies.Data.EnemyData
   m_enemyType: 0
-  m_health: 75
+  m_health: 100
   m_speed: 0
-  m_attackTime: 0
-  m_attackRange: 0
+  m_spell: {fileID: 11400000, guid: bd664c25c70c8e545826ec0eeee9d723, type: 2}
+  m_attackTime: 2
+  m_attackRange: 10

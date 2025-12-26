@@ -1,5 +1,6 @@
-using Entities.Enemies.Data;
 using UnityEngine;
+using Entities.Enemies.Data;
+using Random = UnityEngine.Random;
 
 namespace Entities.Enemies
 {
@@ -7,8 +8,14 @@ namespace Entities.Enemies
     {
         [SerializeField] private Enemy[] m_enemies;
         [SerializeField] private EnemyData[] m_data;
-        
         [SerializeField] private Transform[] m_spawnPoints;
+        [SerializeField] private Transform m_playerTransform;
+        
+        // TODO Xlab - Remove
+        private void Start()
+        {
+            Spawn();
+        }
 
         public void Spawn()
         {
@@ -18,7 +25,7 @@ namespace Entities.Enemies
                 var enemyData = GetEnemyData();
 
                 var enemyInstance = Instantiate(enemy, spawnPoint);
-                enemyInstance.Initialize(enemyData);
+                enemyInstance.Initialize(enemyData, m_playerTransform);
 
                 enemyInstance.Died += OnDied;
             }
@@ -26,6 +33,7 @@ namespace Entities.Enemies
 
         private void OnDied(Enemy enemy)
         {
+            enemy.Died -= OnDied;
             Destroy(enemy.gameObject);
         }
 

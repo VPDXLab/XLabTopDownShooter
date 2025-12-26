@@ -14,7 +14,8 @@ GameObject:
   - component: {fileID: 997753272890520406}
   - component: {fileID: 682948052828827994}
   - component: {fileID: 7931068375728733315}
-  m_Layer: 0
+  - component: {fileID: 3991653107309394300}
+  m_Layer: 7
   m_Name: Enemy
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -128,7 +129,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 0d131f22a50c414c9f58921efdad78fd, type: 3}
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::Entities.Enemies.Enemy
-  m_enemyData: {fileID: 11400000, guid: f8e6fef3285c2274f85cdcf36d16322f, type: 2}
+  m_attack: {fileID: 3991653107309394300}
   m_health: {fileID: 7931068375728733315}
 --- !u!114 &7931068375728733315
 MonoBehaviour:
@@ -142,3 +143,15 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 1f1619fd61d24ab4923276c3e0855d81, type: 3}
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::Entities.HealthComponent
+--- !u!114 &3991653107309394300
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 7579310112638881061}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: dd6cf9cb124e412a850d2d43f9248868, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::Entities.Enemies.Systems.AttackEnemy
