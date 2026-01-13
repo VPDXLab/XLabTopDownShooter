@@ -831,6 +831,7 @@ MonoBehaviour:
   - {fileID: 682948052828827994, guid: ad349f4f0d2c5d74e8876b85ffa1bb8d, type: 3}
   m_data:
   - {fileID: 11400000, guid: f8e6fef3285c2274f85cdcf36d16322f, type: 2}
+  - {fileID: 11400000, guid: cb227aaf13b4e9840a7e8d2d670238c8, type: 2}
   m_spawnPoints:
   - {fileID: 922499609}
   - {fileID: 685171188}

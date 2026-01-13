@@ -1,7 +1,6 @@
 using System.Collections.Generic;
-using Magic.Effects;
 
-namespace Magic.Spells.Projectiles
+namespace Magic.Effects.Extensions
 {
     public static class EffectsExtensions
     {

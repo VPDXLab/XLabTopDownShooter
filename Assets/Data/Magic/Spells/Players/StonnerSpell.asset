@@ -1,0 +1,28 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 0da2637be3804168872506b12276e7fd, type: 3}
+  m_Name: StonnerSpell
+  m_EditorClassIdentifier: Assembly-CSharp::Magic.Spells.Data.AoeSpellData
+  m_spellName: Stonner
+  m_visualEffect: {fileID: 777977292530958465, guid: 1ef893a94318ae54fbb83af0a7fe4ea5, type: 3}
+  m_combination: 0300000003000000
+  m_effects:
+  - rid: 4542201588068384832
+  m_isTarget: 1
+  m_radius: 5
+  references:
+    version: 2
+    RefIds:
+    - rid: 4542201588068384832
+      type: {class: AttackEffect, ns: Magic.Effects, asm: Assembly-CSharp}
+      data:
+        m_damage: 25
