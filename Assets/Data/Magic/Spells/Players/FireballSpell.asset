@@ -16,12 +16,25 @@ MonoBehaviour:
   m_visualEffect: {fileID: 6866449697082456767, guid: 2f2f8bba15196dc42a04290c77b3a61c, type: 3}
   m_combination: 00000000
   m_effects:
-  - rid: 5614381533552443632
+  - rid: 4542201746680447040
+  - rid: 4542201746680447042
   m_speed: 10
   references:
     version: 2
     RefIds:
-    - rid: 5614381533552443632
+    - rid: 4542201746680447040
+      type: {class: BuffEffect, ns: Magic.Effects, asm: Assembly-CSharp}
+      data:
+        m_buffs:
+        - rid: 4542201746680447041
+    - rid: 4542201746680447041
+      type: {class: PoisonDebuff, ns: Magic.Buffs.Impls, asm: Assembly-CSharp}
+      data:
+        <Id>k__BackingField: Poison
+        m_duration: 10
+        m_interval: 1
+        m_damagedPerSeconds: 2
+    - rid: 4542201746680447042
       type: {class: AttackEffect, ns: Magic.Effects, asm: Assembly-CSharp}
       data:
         m_damage: 25
