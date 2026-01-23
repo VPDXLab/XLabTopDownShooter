@@ -17,6 +17,7 @@ GameObject:
   - component: {fileID: 5961986916385506174}
   - component: {fileID: 8830676854873502689}
   - component: {fileID: 8864229818704404032}
+  - component: {fileID: -656469935623369794}
   m_Layer: 6
   m_Name: Player
   m_TagString: Untagged
@@ -205,6 +206,18 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 1f1619fd61d24ab4923276c3e0855d81, type: 3}
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::Entities.HealthComponent
+--- !u!114 &-656469935623369794
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2766789612775872371}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 72749bb91b4c4706a15e2e3ddd74b8c8, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::Magic.Buffs.BuffContainer
 --- !u!1 &3819809868154210745
 GameObject:
   m_ObjectHideFlags: 0

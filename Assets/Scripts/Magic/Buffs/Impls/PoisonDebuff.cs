@@ -59,7 +59,7 @@ namespace Magic.Buffs.Impls
             }
         }
         
-        public override object Clone() =>
+        public override IBuff Clone() =>
             new PoisonDebuff(Id, duration, m_interval, m_damagedPerSeconds);
     }
 }

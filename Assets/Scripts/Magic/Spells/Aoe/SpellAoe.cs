@@ -21,8 +21,6 @@ namespace Magic.Spells.Aoe
                 var effectables = collider.GetComponents<IEffectable>();
                 effects.ApplyEffects(effectables);
             }
-            
-            Debug.Log("SpellAoe initialized");
         }
     }
 }
