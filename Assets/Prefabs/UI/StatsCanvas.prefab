@@ -277,6 +277,7 @@ GameObject:
   m_Component:
   - component: {fileID: 3785705082711635574}
   - component: {fileID: 739597064418605301}
+  - component: {fileID: 3784250653927116969}
   m_Layer: 6
   m_Name: BuffAndDebuff
   m_TagString: Untagged
@@ -329,6 +330,21 @@ MonoBehaviour:
   m_ChildScaleWidth: 0
   m_ChildScaleHeight: 0
   m_ReverseArrangement: 0
+--- !u!114 &3784250653927116969
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 5362978646511937265}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 5f0a36d804ea47b38c941023a6f38e69, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::Magic.Views.BuffElementsContainerView
+  m_buffView: {fileID: 3965946170488582404, guid: bc423bdd147390e4d84ec1b69febd19c, type: 3}
+  m_debuffView: {fileID: 3191359719709160936, guid: a850039e5d6701b43b04a8c626f7d958, type: 3}
+  m_buffContainer: {fileID: 0}
 --- !u!1 &8336023908004762849
 GameObject:
   m_ObjectHideFlags: 0

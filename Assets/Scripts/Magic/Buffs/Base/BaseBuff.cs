@@ -8,14 +8,22 @@ namespace Magic.Buffs.Base
     {
         [field: SerializeField]
         public string Id { get; private set; }
-     
+
+        [field: SerializeField]
+        public Sprite Icon { get; private set; }
+        
+        [field: SerializeField]
+        public BuffType Type { get; private set; }
+
         protected BuffContainer container { get; private set; }
         
         public BaseBuff() { }
 
-        protected BaseBuff(string id)
+        protected BaseBuff(string id, Sprite icon, BuffType type)
         {
             Id = id;
+            Icon = icon;
+            Type = type;
         }
         
         public void Initialize(BuffContainer container)

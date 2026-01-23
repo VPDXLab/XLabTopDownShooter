@@ -219,10 +219,26 @@ PrefabInstance:
       propertyPath: m_Name
       value: StatsCanvas
       objectReference: {fileID: 0}
+    - target: {fileID: 3784250653927116969, guid: daf02e323f1e2fe4ca0ac7b8ce26f197, type: 3}
+      propertyPath: m_buffContainer
+      value: 
+      objectReference: {fileID: 711413120524007833}
     - target: {fileID: 4063640686350100441, guid: daf02e323f1e2fe4ca0ac7b8ce26f197, type: 3}
       propertyPath: m_healthComponent
       value: 
       objectReference: {fileID: 7931068375728733315}
+    - target: {fileID: 7017447770588819442, guid: daf02e323f1e2fe4ca0ac7b8ce26f197, type: 3}
+      propertyPath: m_Color.b
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 7017447770588819442, guid: daf02e323f1e2fe4ca0ac7b8ce26f197, type: 3}
+      propertyPath: m_Color.g
+      value: 0.86247337
+      objectReference: {fileID: 0}
+    - target: {fileID: 7017447770588819442, guid: daf02e323f1e2fe4ca0ac7b8ce26f197, type: 3}
+      propertyPath: m_Color.r
+      value: 1
+      objectReference: {fileID: 0}
     - target: {fileID: 8566436171900128693, guid: daf02e323f1e2fe4ca0ac7b8ce26f197, type: 3}
       propertyPath: m_Pivot.x
       value: 0.5
