@@ -1,6 +1,7 @@
 using System.Collections.Generic;
 using System.Linq;
 using Entities.Enemies.Data;
+using Magic.Spells.Data;
 using UnityEngine;
 using Magic.Systems;
 
@@ -18,20 +19,26 @@ namespace Entities.Enemies.Systems
         
         private int m_count;
         private int m_maxCount;
-        
-        public void Initialize(IReadOnlyList<SpellEnemyData> spells, float attackTime, Transform target)
+        private BaseSpellData m_defaultSpell;
+
+        public void Initialize(
+            BaseSpellData defaultSpell,
+            IReadOnlyList<SpellEnemyData> spells,
+            float attackTime, 
+            Transform target)
         {
             if (m_isInitialized)
             {
                 return;
             }
-            
+
             m_target = target;
             m_attackTime = attackTime;
+            m_defaultSpell = defaultSpell;
             m_spells = spells.OrderBy(spell => spell.count).ToArray();
             m_spellCaster = new SpellCaster(transform, true);
 
-            m_maxCount = spells[^1].count;
+            m_maxCount = spells.LastOrDefault().count;
             m_isInitialized = true;
         }
 
@@ -65,7 +72,7 @@ namespace Entities.Enemies.Systems
 
             if (spell.spell is null)
             {
-                m_spellCaster.Cast(m_spells[0].spell, m_target.position);
+                m_spellCaster.Cast(m_defaultSpell, m_target.position);
             }
             else
             {

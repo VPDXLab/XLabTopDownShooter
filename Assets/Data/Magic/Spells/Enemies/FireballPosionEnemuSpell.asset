@@ -33,7 +33,7 @@ MonoBehaviour:
         <Id>k__BackingField: Posion
         <Icon>k__BackingField: {fileID: 21300000, guid: efd259b63ed4a9f42adf43341b5a54d5, type: 3}
         <Type>k__BackingField: 1
-        m_duration: 5
+        m_duration: 10
         m_interval: 1
         m_damagedPerSeconds: 2
     - rid: 5614381850829520960
