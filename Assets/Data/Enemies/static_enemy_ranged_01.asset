@@ -15,6 +15,10 @@ MonoBehaviour:
   m_enemyType: 0
   m_health: 100
   m_speed: 0
-  m_spell: {fileID: 11400000, guid: bd664c25c70c8e545826ec0eeee9d723, type: 2}
+  m_spells:
+  - count: 1
+    spell: {fileID: 11400000, guid: bd664c25c70c8e545826ec0eeee9d723, type: 2}
+  - count: 3
+    spell: {fileID: 11400000, guid: 50c0fc37f1284e34d931a707b50fb944, type: 2}
   m_attackTime: 2
   m_attackRange: 10
