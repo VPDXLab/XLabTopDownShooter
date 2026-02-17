@@ -10,12 +10,6 @@ namespace Entities.Enemies
         [SerializeField] private EnemyData[] m_data;
         [SerializeField] private Transform[] m_spawnPoints;
         [SerializeField] private Transform m_playerTransform;
-        
-        // TODO Xlab - Remove
-        private void Start()
-        {
-            Spawn();
-        }
 
         public void Spawn()
         {
