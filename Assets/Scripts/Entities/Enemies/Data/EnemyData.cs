@@ -1,3 +1,5 @@
+using System;
+using System.Collections.Generic;
 using Magic.Spells.Data;
 using UnityEngine;
 
@@ -13,7 +15,8 @@ namespace Entities.Enemies.Data
         [SerializeField] [Range(0f, 100f)] private float m_speed;
         
         [Header("Attack")]
-        [SerializeField] private BaseSpellData m_spell;
+        [SerializeField] private BaseSpellData m_defaultSpell;
+        [SerializeField] private SpellEnemyData[] m_spells;
         [SerializeField] [Min(0)] private float m_attackTime;
         [SerializeField] [Min(0)] private float m_attackRange;
         
@@ -21,12 +24,22 @@ namespace Entities.Enemies.Data
         
         public float speed => m_speed;
         
-        public BaseSpellData spell => m_spell;
-        
         public float attackTime => m_attackTime;
         
         public float attackRange => m_attackRange;
         
         public AttackEnemyType enemyType => m_enemyType;
+        
+        public BaseSpellData defaultSpell => m_defaultSpell;
+        
+        public IReadOnlyList<SpellEnemyData> spells => m_spells;
+    }
+
+    [Serializable]
+    public struct SpellEnemyData
+    {
+        // TODO Сделать нормально!!!
+        [SerializeField] public int count;
+        [SerializeField] public BaseSpellData spell;
     }
 }

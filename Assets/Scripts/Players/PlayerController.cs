@@ -1,3 +1,4 @@
+using Entities;
 using Inputs;
 using Magic.Systems;
 using UnityEngine;
@@ -9,11 +10,16 @@ namespace Players
     public class PlayerController : MonoBehaviour
     {
         [SerializeField] private PlayerConfig m_config;
+        [SerializeField] private HealthComponent m_health;
         [SerializeField] private PlayerMovement m_playerMovement;
         [SerializeField] private MouseResolver mMouseResolver;
         [SerializeField] private MagicInputHelper m_magicInputHelper;
 
         private PlayerRotationCalculator m_playerRotationCalculator;
+        
+        public PlayerConfig Config => m_config;
+        
+        public HealthComponent Health => m_health;
         
         private void OnValidate()
         {
@@ -31,7 +37,8 @@ namespace Players
         private void Start()
         {
             var camera = Camera.main;
-            
+
+            m_health.Initialize(m_config.Hp);
             m_playerMovement.Initialize(m_config.speed, m_config.angularSpeed);
             m_playerRotationCalculator = new PlayerRotationCalculator(camera, transform);
             

@@ -1412,7 +1412,7 @@ LineRenderer:
   m_MaskInteraction: 0
   m_Positions:
   - {x: 0, y: 0, z: 0}
-  - {x: 0, y: 0, z: 1}
+  - {x: 0, y: 0, z: 0}
   m_Parameters:
     serializedVersion: 3
     widthMultiplier: 1
@@ -2035,6 +2035,10 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 2817329746063767860, guid: 8baf8e9cab547df47b22be905c2106ff, type: 3}
       propertyPath: m_AnchoredPosition.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 4811797337579875418, guid: 8baf8e9cab547df47b22be905c2106ff, type: 3}
+      propertyPath: m_AnchoredPosition.x
       value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 5961986916385506174, guid: 8baf8e9cab547df47b22be905c2106ff, type: 3}
