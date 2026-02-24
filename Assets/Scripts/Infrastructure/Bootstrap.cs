@@ -1,26 +1,39 @@
+using Cameras;
 using UI;
 using UnityEngine;
 using Entities.Enemies;
 using Infrastructure.States;
+using Markers;
+using Players;
 
 namespace Infrastructure
 {
     public class Bootstrap : MonoBehaviour
     {
-        [SerializeField] private MainMenuView m_mainMenuView;
-        [SerializeField] private SpawnerEnemy m_enemySpawner; 
+        [SerializeField] private TargetMarkerObserver m_targetMarkerObserver;
+        [SerializeField] private BootstrapState m_bootstrapState;
+        [SerializeField] private DeadMenuView m_deadMenuView;
+        [SerializeField] private SpawnerEnemy m_enemySpawner;
+        [SerializeField] private AimLineMarker m_aimLineMarker;
+        [SerializeField] private CameraFollow m_cameraFollow;
         
         private void Awake()
         {
             var stateMachine = new StateMachine();
+            m_bootstrapState.Initialize(stateMachine);
             
             stateMachine.Initialize(
-                new MainMenuState(stateMachine, m_mainMenuView),
+                m_bootstrapState,
                 new PauseMenuState(stateMachine),
-                new DeadState(stateMachine),
-                new GameplayState(stateMachine, m_enemySpawner));
+                new DeadState(stateMachine, m_deadMenuView),
+                new GameplayState(
+                    stateMachine,
+                    m_cameraFollow,
+                    m_enemySpawner,
+                    m_aimLineMarker,
+                    m_targetMarkerObserver));
             
-            stateMachine.ChangedState<MainMenuState>();
+            stateMachine.ChangedState<BootstrapState>();
         }
     }
 }

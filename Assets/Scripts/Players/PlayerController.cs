@@ -1,6 +1,8 @@
 using Entities;
+using Infrastructure;
 using Inputs;
 using Magic.Systems;
+using UnityEditor.Build.Content;
 using UnityEngine;
 using UnityEngine.InputSystem;
 
@@ -12,11 +14,12 @@ namespace Players
         [SerializeField] private PlayerConfig m_config;
         [SerializeField] private HealthComponent m_health;
         [SerializeField] private PlayerMovement m_playerMovement;
-        [SerializeField] private MouseResolver mMouseResolver;
+        
         [SerializeField] private MagicInputHelper m_magicInputHelper;
 
+        private MouseResolver m_mouseResolver;
         private PlayerRotationCalculator m_playerRotationCalculator;
-        
+
         public PlayerConfig Config => m_config;
         
         public HealthComponent Health => m_health;
@@ -27,17 +30,14 @@ namespace Players
             {
                 m_playerMovement = GetComponent<PlayerMovement>();
             }
-            
-            if (!mMouseResolver)
-            {
-                mMouseResolver = GetComponent<MouseResolver>();
-            }
         }
 
-        private void Start()
+        public void Initialize(
+            Camera camera, 
+            MouseResolver mouseResolver)
         {
-            var camera = Camera.main;
-
+            m_mouseResolver = mouseResolver;
+            
             m_health.Initialize(m_config.Hp);
             m_playerMovement.Initialize(m_config.speed, m_config.angularSpeed);
             m_playerRotationCalculator = new PlayerRotationCalculator(camera, transform);
@@ -53,7 +53,7 @@ namespace Players
             
             if (Mouse.current.rightButton.wasPressedThisFrame)
             {
-                Vector3? navPoint = mMouseResolver.GetNavMeshPoint();
+                Vector3? navPoint = m_mouseResolver.GetNavMeshPoint();
 
                 if (navPoint.HasValue)
                 {

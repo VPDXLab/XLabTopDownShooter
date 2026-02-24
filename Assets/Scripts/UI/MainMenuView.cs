@@ -1,5 +1,7 @@
 using System;
+using Infrastructure;
 using UnityEngine;
+using UnityEngine.SceneManagement;
 using UnityEngine.UI;
 
 namespace UI
@@ -24,8 +26,12 @@ namespace UI
             m_exitButton.onClick.RemoveListener(OnExitClick);
         }
 
-        private void OnPlayClick() => PlayClicked?.Invoke();
-        
+        private void OnPlayClick()
+        {
+            SceneManager.LoadScene(GlobalConstants.Scenes.Game);
+            PlayClicked?.Invoke();
+        }
+
         private void OnExitClick() => ExitClicked?.Invoke();
     }
 }

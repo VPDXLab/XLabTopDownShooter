@@ -1,8 +1,12 @@
 using System;
 using System.Collections.Generic;
+using Cameras;
 using Entities.Enemies;
+using Markers;
+using Players;
 using UI;
 using UnityEngine;
+using UnityEngine.SceneManagement;
 
 namespace Infrastructure.States
 {
@@ -38,47 +42,6 @@ namespace Infrastructure.States
         
         public void Exit();
     }
-
-    public class MainMenuState : IState
-    {
-        private readonly StateMachine m_stateMachine;
-        private readonly MainMenuView m_mainMenuView;
-
-        public MainMenuState(
-            StateMachine stateMachine,
-            MainMenuView mainMenuView)
-        {
-            m_stateMachine = stateMachine;
-            m_mainMenuView = mainMenuView;
-            
-            m_mainMenuView.gameObject.SetActive(false);
-        }
-        
-        public void Enter()
-        {
-            m_mainMenuView.gameObject.SetActive(true);
-            m_mainMenuView.PlayClicked += OnPlayClicked;
-            m_mainMenuView.ExitClicked += OnExitClicked;
-        }
-
-        public void Exit()
-        {
-            m_mainMenuView.PlayClicked -= OnPlayClicked;
-            m_mainMenuView.ExitClicked -= OnExitClicked;
-            m_mainMenuView.gameObject.SetActive(false);
-        }
-        
-        private void OnPlayClicked() =>
-            m_stateMachine.ChangedState<GameplayState>();
-        
-        private void OnExitClicked()
-        {
-#if UNITY_EDITOR
-            UnityEditor.EditorApplication.ExitPlaymode();
-#endif
-            Application.Quit();
-        }
-    }
     
     public class PauseMenuState : IState
     {
@@ -97,35 +60,78 @@ namespace Infrastructure.States
     public class GameplayState : IState
     {
         private readonly StateMachine m_stateMachine;
+        private readonly CameraFollow m_cameraFollow;
         private readonly SpawnerEnemy m_spawnerEnemy;
+        private readonly AimLineMarker m_aimLineMarker;
+        private readonly TargetMarkerObserver m_targetMarkerObserver;
+        
+        private PlayerController m_playerController;
 
         public GameplayState(
             StateMachine stateMachine,
-            SpawnerEnemy spawnerEnemy)
+            CameraFollow cameraFollow,
+            SpawnerEnemy spawnerEnemy,
+            AimLineMarker aimLineMarker,
+            TargetMarkerObserver targetMarkerObserver)
         {
+            m_cameraFollow = cameraFollow;
             m_spawnerEnemy = spawnerEnemy;
             m_stateMachine = stateMachine;
+            m_aimLineMarker = aimLineMarker;
+            m_targetMarkerObserver = targetMarkerObserver;
         }
         
         public void Enter()
         {
+            var playerPosition = ServiceLocator.Resolve<PlayerSpawnPoint>();
+            ServiceLocator.Resolve<IPlayerFactorySettings>().position = playerPosition.transform.position;
+            m_playerController = ServiceLocator.Resolve<IPlayerFactory>().Create();
+            
+            m_cameraFollow.SetTarget(m_playerController.transform);
+            m_aimLineMarker.Initialize(m_playerController.transform);
+            m_targetMarkerObserver.Initialize(m_playerController.GetComponent<PlayerMovement>());
+            
             m_spawnerEnemy.Spawn();
+            m_playerController.Health.Died += OnDied;
         }
 
-        public void Exit() =>  throw new NotImplementedException();
+        public void Exit()
+        {
+            m_playerController.Health.Died -= OnDied;
+        }
+
+        private void OnDied() =>
+            m_stateMachine.ChangedState<DeadState>();
     }
     
     public class DeadState : IState
     {
         private readonly StateMachine m_stateMachine;
+        private readonly DeadMenuView m_deadMenuView;
 
-        public DeadState(StateMachine stateMachine)
+        public DeadState(StateMachine stateMachine, DeadMenuView deadMenuView)
         {
             m_stateMachine = stateMachine;
+            m_deadMenuView = deadMenuView;
+            
+            deadMenuView.gameObject.SetActive(false);
+        }
+
+        public void Enter()
+        {
+            m_deadMenuView.GoToMenuClicked += OnGoToMenuClicked;
+            m_deadMenuView.gameObject.SetActive(true);
+        }
+
+        public void Exit()
+        {
+            m_deadMenuView.GoToMenuClicked -= OnGoToMenuClicked;
+            m_deadMenuView.gameObject.SetActive(false);
         }
         
-        public void Enter() =>  throw new NotImplementedException();
-
-        public void Exit() =>  throw new NotImplementedException();
+        private void OnGoToMenuClicked()
+        {
+            SceneManager.LoadScene(GlobalConstants.Scenes.Main);
+        }
     }
 }
