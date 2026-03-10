@@ -1,3 +1,4 @@
+using System;
 using Cameras;
 using UI;
 using UnityEngine;
@@ -16,24 +17,30 @@ namespace Infrastructure
         [SerializeField] private SpawnerEnemy m_enemySpawner;
         [SerializeField] private AimLineMarker m_aimLineMarker;
         [SerializeField] private CameraFollow m_cameraFollow;
+        [SerializeField] private PauseMenuView m_pauseMenuView;
+        
+        private StateMachine m_stateMachine;
         
         private void Awake()
         {
-            var stateMachine = new StateMachine();
-            m_bootstrapState.Initialize(stateMachine);
+            m_stateMachine = new StateMachine();
+            m_bootstrapState.Initialize(m_stateMachine);
             
-            stateMachine.Initialize(
+            m_stateMachine.Initialize(
                 m_bootstrapState,
-                new PauseMenuState(stateMachine),
-                new DeadState(stateMachine, m_deadMenuView),
+                new PauseMenuState(m_stateMachine, m_pauseMenuView),
+                new DeadState(m_stateMachine, m_deadMenuView),
                 new GameplayState(
-                    stateMachine,
+                    m_stateMachine,
                     m_cameraFollow,
                     m_enemySpawner,
                     m_aimLineMarker,
                     m_targetMarkerObserver));
             
-            stateMachine.ChangedState<BootstrapState>();
+            m_stateMachine.ChangedState<BootstrapState>();
         }
+
+        private void Update() =>
+            m_stateMachine.Update();
     }
 }
