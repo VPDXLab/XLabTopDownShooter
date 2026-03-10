@@ -1,8 +1,7 @@
-using System;
-using System.Collections;
 using UnityEngine;
-using UnityEngine.SceneManagement;
 using UnityEngine.UI;
+using System.Collections;
+using UnityEngine.SceneManagement;
 
 namespace Infrastructure
 {
@@ -17,19 +16,13 @@ namespace Infrastructure
         {
             if (m_instance is not null)
             {
-                if (m_instance.GetEntityId() != GetEntityId())
-                {
-                    Destroy(gameObject);
-                }
-                
-                return;
+                Destroy(m_instance.gameObject);
+                m_instance = null;
             }
 
             m_instance = this;
-            DontDestroyOnLoad(this);
             gameObject.SetActive(false);
-            
-            ServiceLocator.Register(this);
+            DontDestroyOnLoad(target: this);
         }
 
         public void LoadScene(string nameScene)
@@ -47,7 +40,7 @@ namespace Infrastructure
             
             for (var i = 0; i < steps; i++)
             {
-                yield return new WaitForSeconds(0.5f);
+                yield return new WaitForSecondsRealtime(0.5f);
                 m_loading.fillAmount += maxProgress / steps;
             }
             

@@ -34,7 +34,7 @@ namespace Entities.Enemies
                 enemyInstance.Initialize(enemyData, playerTransform);
 
                 enemyInstance.Died += OnDied;
-                m_currentEnemies.Add(enemy);
+                m_currentEnemies.Add(enemyInstance);
             }
         }
 
@@ -62,8 +62,11 @@ namespace Entities.Enemies
 
         private void DestroyEnemy(Enemy enemy)
         {
-            enemy.Died -= OnDied;
-            Destroy(enemy.gameObject);
+            if (enemy)
+            {
+                enemy.Died -= OnDied;
+                Destroy(enemy.gameObject);
+            }
         }
     }
 }

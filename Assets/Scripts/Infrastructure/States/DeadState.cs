@@ -30,7 +30,7 @@ namespace Infrastructure.States
         
         private void OnGoToMenuClicked()
         {
-            SceneManager.LoadScene(GlobalConstants.Scenes.Main);
+            m_stateMachine.ChangedState<GameplayExitState>();
         }
     }
 }

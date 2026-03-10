@@ -5,7 +5,6 @@ namespace Infrastructure.States
 {
     public class PauseMenuState : IState
     {
-        private readonly Loading m_loading;
         private readonly StateMachine m_stateMachine;
         private readonly PauseMenuView m_pauseMenuView;
 
@@ -15,7 +14,6 @@ namespace Infrastructure.States
         {
             m_stateMachine = stateMachine;
             m_pauseMenuView = pauseMenuView;
-            m_loading = ServiceLocator.Resolve<Loading>();
         }
 
         public void Enter()
@@ -23,7 +21,7 @@ namespace Infrastructure.States
             Time.timeScale = 0;
             m_pauseMenuView.gameObject.SetActive(true);
             m_pauseMenuView.ContinueClicked += OnContinueClicked;
-            m_pauseMenuView.MainMenuClicked += OnPauseMenuClicked;
+            m_pauseMenuView.MainMenuClicked += OnMainMenuClicked;
         }
 
         public void Exit()
@@ -31,16 +29,15 @@ namespace Infrastructure.States
             Time.timeScale = 1;
             m_pauseMenuView.gameObject.SetActive(false);
             m_pauseMenuView.ContinueClicked -= OnContinueClicked;
-            m_pauseMenuView.MainMenuClicked -= OnPauseMenuClicked;
+            m_pauseMenuView.MainMenuClicked -= OnMainMenuClicked;
         }
 
         private void OnContinueClicked() =>
             m_stateMachine.ChangedState<GameplayState>();
 
-        private void OnPauseMenuClicked()
+        private void OnMainMenuClicked()
         {
-            Exit();
-            m_loading.LoadScene(GlobalConstants.Scenes.Main);
+            m_stateMachine.ChangedState<GameplayExitState>();
         }
     }
 }

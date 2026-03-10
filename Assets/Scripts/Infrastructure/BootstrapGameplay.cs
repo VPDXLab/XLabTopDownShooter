@@ -1,15 +1,13 @@
-using System;
 using Cameras;
 using UI;
 using UnityEngine;
 using Entities.Enemies;
 using Infrastructure.States;
 using Markers;
-using Players;
 
 namespace Infrastructure
 {
-    public class Bootstrap : MonoBehaviour
+    public class BootstrapGameplay : MonoBehaviour
     {
         [SerializeField] private TargetMarkerObserver m_targetMarkerObserver;
         [SerializeField] private BootstrapState m_bootstrapState;
@@ -25,14 +23,15 @@ namespace Infrastructure
         {
             m_stateMachine = new StateMachine();
             m_bootstrapState.Initialize(m_stateMachine);
-            
+
             m_stateMachine.Initialize(
                 m_bootstrapState,
                 new PauseMenuState(m_stateMachine, m_pauseMenuView),
                 new DeadState(m_stateMachine, m_deadMenuView),
-                new GameplayState(
+                new GameplayState(m_stateMachine, m_cameraFollow),
+                new GameplayExitState(m_enemySpawner),
+                new GameplayEntryState(
                     m_stateMachine,
-                    m_cameraFollow,
                     m_enemySpawner,
                     m_aimLineMarker,
                     m_targetMarkerObserver));
